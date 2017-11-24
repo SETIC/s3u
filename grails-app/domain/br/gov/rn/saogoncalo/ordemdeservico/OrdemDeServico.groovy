@@ -13,6 +13,7 @@ class OrdemDeServico {
 	String solucao
 	long codLaudo
 	String celular
+	String anexo
 	
 	static belongsTo = [status:Status, orgao:Orgao, funcionarioOs:FuncionarioOs, usuariosOs:UsuariosOs, endereco:Endereco, tipoServico:TipoServico]
 	static hasMany = [tecnicoOS:TecnicoOs, laudo:Laudo, complementoLimpeza:ComplementoLimpeza, complementoIluminacao:ComplementoIluminacao]
@@ -29,6 +30,7 @@ class OrdemDeServico {
 		dataAgendamento blank:true, nullable:true
 		codLaudo blank:true, nullable:true
 		celular blank:false, nullable:false
+		anexo blank:true, nullable:true
 
 	}
 	

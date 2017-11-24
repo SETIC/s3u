@@ -16,7 +16,7 @@
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1></h1>
+			
 <script>
   function printDiv(id)
    {
@@ -43,7 +43,17 @@
 }
 </script>
 	<!-- Content Header (Page header) -->
-	<section class="content-header" style="margin-left: 5%; margin-bottom:2px;">
+	
+	      <h1>
+	        Sistema de Solicitação de Serviços Urbanos
+	      </h1>
+	      <ol class="breadcrumb">
+	        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+	        <li><a href="#">UI</a></li>
+	        <li class="active">Modals</li>
+	      </ol>
+	</section>
+	<section class="content" style="margin-left: 5%; margin-bottom:2px;">
 	    <br>
      		<style type="text/css">
 		    .box {
@@ -76,11 +86,14 @@
 				</style>
 				<g:form controller="ordemDeServico" action="homeGrafico" class="form">
 				</g:form>
-				<div class="box" id="divGrafico">
-					<div style="margin-top: 20px; margin-left: 20px;">
+				
+
+				<div class="box" id="divGrafico" style="margin-top: 100px;">
+					
+					<div class="box-header with-border" style="margin-top: 20px; margin-left: 20px;">
 						<label>Total :${totalStatus}</label>
 					</div>
-					<div class="box-chart">
+					<div class="box-body box-chart">
 						<canvas id="GraficoPizza" style="width: 400px; height: 400px;"></canvas>
 						<script type="text/javascript">
 							var abertos = ${tipoStatusAberto}
@@ -164,6 +177,7 @@
 							</tbody>
 						</table>
 					</div>
+					<div class="box-footer">Footer</div>
 				</div>
 				<div style="margin: 0 20% auto; margin-top: -150px;">
 					<button class="btn btn-primary btn-flat"

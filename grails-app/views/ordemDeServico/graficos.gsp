@@ -49,7 +49,19 @@
   newWin.document.write("<p style = 'margin-left:20px;'>Abertos: " +abertos+ " </p>");
   newWin.document.write("<p style = 'margin-left:20px;'>Pendentes: " +pendentes+ " </p>");
   newWin.document.write("<p style = 'margin-left:20px;'>Concluidos: " +concluidos+ " </p>");
+
+
+  var textArea  = document.getElementById('textAreaDescricao');
+  //var divText = document.querySelector('labelDescricao');
+ 
+  document.getElementById('labelDescricao').innerHTML = "teste rrr";
+  document.getElementById('labelDescricao').innerHTML = textArea.value;
   
+
+  //divText.innerHTML = textArea.value;
+  
+    
+
   newWin.document.write(divToPrint.outerHTML);
   newWin.print();
   newWin.close();
@@ -140,6 +152,13 @@
 					</div>
 					<br>
 					<br>
+					
+					<div style="margin-top: 10px; margin-left: 18px;">
+						<label>Descrição</label><br>
+						<textarea rows="5" id="textAreaDescricao"> </textarea>
+					</div>
+					
+					
 					<div style="margin-top: 10px; margin-left: 18px;">
 						<button style="margin-top: 10px; width: 130px" type="submit"
 							class="btn btn-primary btn-flat">
@@ -231,16 +250,18 @@
 									<td class="legendLabel">Concluidos</td>
 								</tr>
 								<tr>
-								
-									<div class="form-group">
-	  									<textarea class="form-control" rows="5" id="comment"></textarea>
-									</div>
+							
+								<div id="labelDescricao"></div>
 									
-								</tr>
+							</tr>
 							</tbody>
 						</table>
+						
 					</div>
+					
 				</div>
+				
+				
 				<div style="margin: 0 20% auto; margin-top: -150px;">
 					<button class="btn btn-primary btn-flat"
 						onclick="printDiv('divGrafico')">

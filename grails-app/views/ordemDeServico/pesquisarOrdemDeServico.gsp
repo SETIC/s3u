@@ -27,20 +27,24 @@
 		  
   var listaOs = document.getElementById('pequisarOs');
   newWin = window.open("");
-  newWin.document.write("<style=''>");
-  newWin.document.write("<table border='0'>");
   
-  newWin.document.write("<td><img src='${request.getRequestURL().substring(0, request.getRequestURL().indexOf('s3u/'))}s3u/static/images/sga.png';  style='width:100px; float:left; margin-top:5px;'></td>");
+
+
+
+
+  
+  newWin.document.write("<table>");
+  newWin.document.write("<tbody>");
   newWin.document.write("<tr>");
-  newWin.document.write("<h4 style=' margin-left:180px; '>PREFEITURA MUNICIPAL DE SÃO GONÇALO DO AMARANTE - RN</h4>");
-  newWin.document.write("<h4 style=' margin-left:220px; '>SECRETARIA MUNICIPAL DE SERVIÇOS URBANOS - SEMURB </h4>");
-  newWin.document.write("<style type='text/css' >");
-  newWin.document.write("</style>");
-  newWin.document.write("");
-  newWin.document.write("<br>");
+  newWin.document.write("<td><img src='${request.getRequestURL().substring(0, request.getRequestURL().indexOf('s3u/'))}s3u/static/imagens/sga.png';  style='width:100px; float:left; margin-top:5px;'></td>");
+  newWin.document.write("<td style='text-align: left;''>");
+  newWin.document.write("<p>PREFEITURA MUNICIPAL DE S&Atilde;O GON&Ccedil;ALO DO AMARANTE.</p>");
+  newWin.document.write("<p>SECRETARIA MUNICIPAL DE SERVI&Ccedil;OS URBANOS.</p>");
   newWin.document.write("</td>");
   newWin.document.write("</tr>");
-  newWin.document.write("</table><br>");
+  newWin.document.write("</tbody>");
+  newWin.document.write("</table>");
+																		  
 
   var now = new Date();
   meses = new Array(12);

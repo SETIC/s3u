@@ -120,6 +120,8 @@
 		style="float: inherit; margin-left: auto; margin-right: auto;">
 		<header class="main-header">
 		
+
+		
 			<!-- Header Navbar: style can be found in header.less -->
 
 			<div class="wrapper">
@@ -129,7 +131,7 @@
 					<!-- Logo -->
 					<a href="/s3u/ordemDeServico/listarOrdemDeServico" class="logo"> <!-- mini logo 50x50 pixels -->
 						<span class="logo-mini"><b></b></span> <!-- logo regular --> <span
-						class="logo-lg"><b>SIS</b>OS</span>
+						class="logo-lg"><b>S3U</b></span>
 					</a>
 
 					<!-- Header Navbar: style can be found in header.less -->
@@ -146,7 +148,7 @@
 									<!-- User Account: style can be found in dropdown.less -->
 								<li class="dropdown user user-menu"><a href="#"
 									class="dropdown-toggle" data-toggle="dropdown"> <span
-										class="hidden-xs">Suporte OS</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										class="hidden-xs">Sistema de Solicitação de Serviços Urbanos</span>&nbsp;&nbsp;&nbsp;&nbsp;
 								</a>
 									<ul class="dropdown-menu">
 										<!-- User image -->

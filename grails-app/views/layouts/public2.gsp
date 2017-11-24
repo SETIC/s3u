@@ -131,7 +131,7 @@
 
 							</div><!-- mini logo 50x50 pixels -->
 						<span class="logo-mini"><b></b></span> <!-- logo regular --> <span
-						class="logo-lg"><b>SIS</b>OS</span>
+						class="logo-lg"><b>S3U</b></span>
 					</a>
 
 					<!-- Header Navbar: style can be found in header.less -->
@@ -145,7 +145,7 @@
 									<!-- User Account: style can be found in dropdown.less -->
 								<li class="dropdown user user-menu"><a href="#"
 									class="dropdown-toggle" data-toggle="dropdown"> <span
-										class="hidden-xs">Sistema de Chamado de Assistência Técnica ao Setor de Tecnologia</span>&nbsp;&nbsp;&nbsp;&nbsp;
+										class="hidden-xs">Sistema de Solicitação de Serviços Urbanos</span>&nbsp;&nbsp;&nbsp;&nbsp;
 								</a>
 									<ul class="dropdown-menu">
 
@@ -179,7 +179,7 @@
 			<strong>Copyright &copy; 2016 <a
 				href="http://www.saogoncalo.rn.gov.br/portal-setic/">SETIC -
 					Subsecretaria de Tecnologia da Informação e Ciência</a>.
-			</strong>&nbsp;&nbsp; <b>Contato:</b> 98152-9740
+			</strong>&nbsp;&nbsp; <b>Contato:</b> 98146-6686
 		</footer>
 		
 	</div>

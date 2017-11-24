@@ -10,11 +10,12 @@
 <p id="alertVerificador" class="text-red"></p>
 	<section class="content-header" style="margin-left: 5%; margin-bottom:auto;">
 		<h1>
-			Ordem De Serviço <small>Cadastro</small>
+			Ordem De Serviço
 		</h1>
 
 		<ul class="nav nav-tabs"> 
-		<!--  <div style= "text-align:right;"><a href="/s3u/usuariosOs/login.gsp">Acesso</a></div></ul> --> 
+		<div style= "text-align:right;"><a href="/s3u/usuariosOs/login.gsp">Acesso</a></div></ul> 
+		
 	</section>
 	<!-- CORPO DA PÁGINA -->
 	<section class="content">
@@ -31,7 +32,7 @@
 			</g:if>
 			<div style="margin-left: 150px">
 
-				<g:form name="ordemDeServico" controller="ordemDeServico" action="salvarOrdemDeServicoRet" class="form-horizontal">
+				<g:form name="ordemDeServico" controller="ordemDeServico" action="salvarOrdemDeServico" class="form-horizontal">
 					<fieldset>
 					   <div class="alert alert-info"><strong>Aviso. </strong> A SEMSUR informa que o s3u é de uso exclusivo para a abertura 
 						  de chamados de utilidade pública.

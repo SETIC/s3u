@@ -37,8 +37,7 @@
 						<g:each in='${ordemDeServico?}'>
 						</g:each>
 						<div style="margin-left: 120px">
-							<g:form controller="ordemDeServico" action="atualizar"
-								class="form-horizontal">
+							<g:form controller="ordemDeServico" action="atualizar" class="form-horizontal" enctype="multipart/form-data">
 								<g:hiddenField type="number" name="id" value="${it.id}" />
 								<fieldset>
 									<div class="form-group">
@@ -89,14 +88,7 @@
 									</div>
 									<br>
 									
-									<!--  
-									<div class="form-group">
-										<label for="inputorgao" class="col-sm-2 control-label">Orgão</label>
-										<div class="col-sm-4">
-											<g:textField class="form-control"  name="orgao" value="${it.orgao.nome}" />
-										</div>
-									</div>
-									<br> -->
+	
 									
 									<style>.datepicker{z-index:1200 !important;}</style>
 									<div>
@@ -281,7 +273,14 @@
 										</div>
 									</div>
 									<br>
-									<br>
+								
+									<div class="form-group">
+										<label for="anexo" class="col-sm-2 control-label" >Anexo</label>
+										<div class="col-sm-4">
+											<input class="form-control" name="anexo" id="anexo" 
+												type="text" value="${ordemDeServico?.anexo}">
+										</div>
+									</div>
 									
 									</div>
 									
@@ -306,8 +305,75 @@
 												type="text" value="${complementoLimpeza?.qtdArvore}">
 										</div>
 									</div>
-									<br>
+								
+
 									</div>
+									
+
+								<script type="text/javascript">  
+
+										function conteudo(){
+											
+											document.getElementById("anexo").value = document.getElementById("arquivo[]").value;
+
+											}
+
+								        function limparCampoFile(){
+											document.getElementById("arquivo[]").value = "";
+
+										}
+										
+										$(document).ready(function(){  
+										    var input = '<label style="display: block"><input type = "file" name ="arquivo[]" id="arquivo[]" class="upload-file" data-max-size="300000000" enctype="multipart/form-data"/><a href="#" class="remove">Excluir</a></label>';  
+										    $("input[name='addFile']").click(function(e){ 
+										    	document.getElementById("anexo").value = "teste";  
+										        $('#inputs_adicionais').append( input );  
+  
+										    });  
+
+											
+											 
+										    $('#inputs_adicionais').delegate('a','click',function(e){  
+										        e.preventDefault();  
+										        $(this).parent('label').remove();
+										        
+										        
+										    });  
+										            
+										 
+										}); 
+
+										$(function(){
+											
+											//var inputAnexo = document.getElementById("novoAnexo").disabled = true;
+										    var fileInput = $('.upload-file');
+										    var maxSize = fileInput.data('max-size');
+										    $('.form-horizontal').submit(function(e){
+										      var fileSize = fileInput.get(0).files[0].size; //em bytes
+
+										      
+
+									            if(fileSize>maxSize ){
+										                alert('o tamanho do arquivo e maior do que ' + maxSize + ' bytes');
+										                return false;
+											         }
+											
+										    
+										    });
+										});
+										 
+
+							</script>
+							
+							<label style="display: block"> <input type = "file" name ="arquivo[]" id="arquivo[]" onChange="conteudo()" class="upload-file" data-max-size="300000000" enctype="multipart/form-data"/>
+					        <br><input type="button" name="limpar" class="btn btn btn-flat" value="Limpar" onclick="limparCampoFile()"> </label>
+					         
+					        <fieldset id="inputs_adicionais" style="border: none">  
+					        </fieldset> 
+									
+									
+									
+									
 									
 									
 
