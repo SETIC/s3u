@@ -79,7 +79,8 @@ grails {
 		//port = 465
 		
 		username = "suporte.setic@gmail.com"
-		password = "suporte@seticpmsga"
+		//password = "suporte@seticpmsga"
+		password = "ssetic2017"
 		props = ["mail.smtp.auth":"true", "mail.smtp.starttls.enable":"true"]
 		
 		/*props = ["mail.smtp.auth":"true",
