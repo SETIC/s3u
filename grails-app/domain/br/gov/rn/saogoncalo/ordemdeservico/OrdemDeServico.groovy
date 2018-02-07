@@ -24,12 +24,12 @@ class OrdemDeServico {
 		dataConclusao blank:true, nullable:true 
 		descricao blank:false, nullable:false
 		solucao blank:true, nullable:true
-		email blank:false, nullable:false
-		cpf blank:false, nullable:false
-		telefone blank:false, nullable:false
+		email blank:true, nullable:true
+		cpf blank:true, nullable:true
+		telefone blank:true, nullable:true
 		dataAgendamento blank:true, nullable:true
 		codLaudo blank:true, nullable:true
-		celular blank:false, nullable:false
+		celular blank:true, nullable:true
 		anexo blank:true, nullable:true
 
 	}

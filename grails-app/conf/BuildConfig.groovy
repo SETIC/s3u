@@ -44,14 +44,19 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+		
+		//mavenRepo "http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts"
+		//mavenRepo "https://repo.grails.org/grails/plugins/org/grails/plugins"
     }
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.27'
         runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
-
+		//runtime 'org.springframework:spring-test:6.0.4'
 		runtime 'org.springframework:spring-test:4.1.4.RELEASE'
+		
+
 
     }
 
@@ -64,9 +69,8 @@ grails.project.dependency.resolution = {
         compile ":scaffolding:2.0.2"
         compile ':cache:1.1.1'
 		compile ":mail:1.0.7"
-
 		compile ":rendering:1.0.0"
-
+		
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.9" // or ":hibernate4:4.3.4"
         runtime ":database-migration:1.3.8"
@@ -86,5 +90,17 @@ grails.project.dependency.resolution = {
         //compile ":less-asset-pipeline:1.5.3"
         //compile ":coffee-asset-pipeline:1.5.0"
         //compile ":handlebars-asset-pipeline:1.3.0.1"
+		
+		//compile ":jasperreports:6.0.4" 
+		
+		//compile "org.grails.plugins:jasper:1.11.0"
+		
+		compile "org.grails.plugins:dynamic-jasper:0.6"
+		compile "org.grails.plugins:jasper-response:1.0.1"
+		
+		//compile "org.grails.plugins:jasper:1.11.0"
+
+		
+		
     }
 }

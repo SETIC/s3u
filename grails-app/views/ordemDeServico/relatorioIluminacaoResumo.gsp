@@ -22,47 +22,53 @@
 				</ol>
 				
 	<script>
-  function printDiv(id)
-  {
-		  
-  var listaOs = document.getElementById('pequisarOs');
-  newWin = window.open("");
-  newWin.document.write("<style=''>");
-  newWin.document.write("<table border='0'>");
-  
-  newWin.document.write("<td><img src='${request.getRequestURL().substring(0, request.getRequestURL().indexOf('s3u/'))}s3u/static/images/sga.png';  style='width:100px; float:left; margin-top:5px;'></td>");
-  newWin.document.write("<tr>");
-  newWin.document.write("<h4 style=' margin-left:180px; '>PREFEITURA MUNICIPAL DE SÃO GONÇALO DO AMARANTE - RN</h4>");
-  newWin.document.write("<h4 style='margin-top:20px; margin-left:320px;'> ORDENS DE SERVIÇO</h4>");
-  newWin.document.write("<style type='text/css' >");
-  newWin.document.write("</style>");
-  newWin.document.write("");
-  newWin.document.write("<br>");
-  newWin.document.write("</td>");
-  newWin.document.write("</tr>");
-  newWin.document.write("</table><br>");
+	function printDiv(id)
+	  {
+			  
+	  var listaOs = document.getElementById('pesquisarOs');
+	  //var listaOs = document.getElementById('tabelas'); 
+	  
+	  
+	  var now = new Date();
+	  meses = new Array(12);
+	  meses[0] = "Janeiro";
+	  meses[1] = "Fevereiro";
+	  meses[2] = "Março";
+	  meses[3] = "Abril";
+	  meses[4] = "Maio";
+	  meses[5] = "Junho";
+	  meses[6] = "Julho";
+	  meses[7] = "Agosto";
+	  meses[8] = "Setembro";
+	  meses[9] = "Outubro";
+	  meses[10] = "Novembro";
+	  meses[11] = "Dezembro";
+	  
+	  newWin = window.open("");
 
-  var now = new Date();
-  meses = new Array(12);
-  meses[0] = "Janeiro";
-  meses[1] = "Fevereiro";
-  meses[2] = "Março";
-  meses[3] = "Abril";
-  meses[4] = "Maio";
-  meses[5] = "Junho";
-  meses[6] = "Julho";
-  meses[7] = "Agosto";
-  meses[8] = "Setembro";
-  meses[9] = "Outubro";
-  meses[10] = "Novembro";
-  meses[11] = "Dezembro";
-  
-  newWin.document.write ("<center style='font-size:18px;'><br/>Gerado dia " + now.getDate() + " de " + meses[now.getMonth()] + " de " + now.getFullYear() + " às " + now.getHours()+":"+now.getMinutes()+"</center>");
-  newWin.document.write(listaOs.outerHTML);
-  newWin.print();
-  newWin.close();
-  
-}
+	  newWin.document.write("<table style='width: 741px;'>");
+	  newWin.document.write("<tbody>");
+	  newWin.document.write("<tr>");
+	  newWin.document.write("<td style='width: 121px;' rowspan='2'>   <img src='${request.getRequestURL().substring(0, request.getRequestURL().indexOf('s3u/'))}s3u/static/images/sga.png';  style='width:100px; float:left; margin-top:5px;'>  </td>");
+	  newWin.document.write("<td style='width: 628px; '>&nbsp;PREFEITURA MUNICIPAL DE S&Atilde;O GON&Ccedil;ALO DO AMARANTE - RN <br> &nbsp;SECRETARIA MUNICIPAL DE SERVI&Ccedil;OS URBANOS <br> &nbsp;RELATORIO DE OS DE ILUMINAÇÃO DETALHADO <br> &nbsp;GERADO EM " + now.getDate() + " de " + meses[now.getMonth()] + " de " + now.getFullYear() + " às " + now.getHours()+":"+now.getMinutes() + " </td>");
+	  newWin.document.write("</tr>");
+	  newWin.document.write("<tr>");
+	  newWin.document.write("<td style='width: 628px; '> </td>");
+	  newWin.document.write("</tr>");
+	  newWin.document.write("<tr>");
+	  newWin.document.write("<td style='width: 121px; text-align: center;' colspan='2'> </td>");
+	  newWin.document.write("</tr>");
+	  newWin.document.write("</tbody>");
+	  newWin.document.write("</table> <br>");
+
+
+	    
+	  newWin.document.write(listaOs.outerHTML);
+	  newWin.print();
+	  
+	  newWin.close();
+	  
+	}
 </script>			
 				
 <script>
@@ -170,104 +176,77 @@
 			</g:if>
                        
 			<div class="box box-white">
-				<table id="pequisarOs" cellpadding="0.2em" cellspacing="0" border="1px" class="table table-striped table-hover example" border="1" border="1" style="font-size:0.8em">
-					<thead>
-						<tr class="success">
-							<th style="text-align: left;padding-left:10px;">Numero</th>
-							<th style="text-align: left;padding-left:10px;">Serviço</th>
-						    <th style="text-align: left;padding-left:10px;">Poste</th>
-						    <th style="text-align: left;padding-left:10px;">Endereço</th>
-						    <th style="text-align: left;padding-left:10px;">Referência</th>
-						    <th style="text-align: left;padding-left:10px;">Data</th>
-						    <th style="text-align: left;padding-left:10px;">Interessado</th>
-						    <th style="text-align: left;padding-left:10px;">Telefone</th>
-						    <th style="text-align: left;padding-left:10px;">Observação</th>
-						    
-						    <th style="text-align: left;padding-left:10px;">Tipo Lampada</th>
-						    <th style="text-align: left;padding-left:10px;">Qtd Lampada</th>
-						    <th style="text-align: left;padding-left:10px;">Foto</th>
-						    <th style="text-align: left;padding-left:10px;">Qtd Foto</th>
-						    <th style="text-align: left;padding-left:10px;">Reator</th>
-						    <th style="text-align: left;padding-left:10px;">Qtd Reator</th>
-						    <th style="text-align: left;padding-left:10px;">Potência Reator</th>
-						    <th style="text-align: left;padding-left:10px;">Qtd Base</th>
-						    <th style="text-align: left;padding-left:10px;">Outro</th>
-						</tr>
-					</thead>
+				<table id="pesquisarOs" collSpan="0" rowSpan="0" cellpadding="0.2em" cellspacing="0" border="1px" class="table table-striped table-hover example" border="1" style="font-size:0.8em">
+					
+					
+					
 					<tbody>
 					<g:set var="i" value="${1}" />
 						<g:each in='${complementoIluminacao?}' var="ci">
+			
+			
 							<tr class='linha_registro'>
 								<td class="info">
-								   ${ci.ordemDeServico.id}
+								   <strong>cod.:</strong> ${ci.ordemDeServico.id}
 								</td>
-
 								<td class="info">
-									${ci.ordemDeServico.tipoServico.servico.servico}
+									<strong>Serviço: </strong>${ci.ordemDeServico.tipoServico.servico.servico}
 								</td>
-								
 								<td class="info">
-
-    								${ci.numeroPoste}
-								   
+    								<strong>Num. Poste: </strong>${ci.numeroPoste}
 								</td>
-								
 								<td class="info">
-								   ${ci.ordemDeServico.endereco.logradouro.logradouro + ' - ' + ci.ordemDeServico.endereco.logradouro.bairro.bairro + ' - ' + ci.ordemDeServico.endereco.logradouro.bairro.cidade.cidade + ' - ' + ci.ordemDeServico.endereco.logradouro.cep}
+								   <strong>Endereço: </strong>${ci.ordemDeServico.endereco.logradouro.logradouro + ' - ' + ci.ordemDeServico.endereco.logradouro.bairro.bairro + ' - ' + ci.ordemDeServico.endereco.logradouro.bairro.cidade.cidade + ' - ' + ci.ordemDeServico.endereco.logradouro.cep}
 								</td>								
-								
 								<td class="info">
-								   ${ci.ordemDeServico.endereco.referencia}
+								   <strong>Referencia: </strong>${ci.ordemDeServico.endereco.referencia}
 								</td>
-							    
 							    <td class="info">
-								   ${ci.ordemDeServico.dataEmissao}
+								   <strong>Data: </strong>${ci.ordemDeServico.dataEmissao}
 								</td>
-
 	 						    <td class="info"> 
-	 						       ${ci.ordemDeServico.interessado} 
-	 						    </td>
-							   
-								<td class="info"> 
-	 						       ${ci.ordemDeServico.telefone} 
-	 						    </td>
-	 						    
-	 						    <td class="info"> 
-	 						       ${ci.ordemDeServico.descricao} 
-	 						    </td>
-								
-								
-								
-								
-								<td class="info"> 
-	 						       ${ci.tipoLampada} 
+	 						       <strong>Interessado: </strong>${ci.ordemDeServico.interessado} 
 	 						    </td>
 								<td class="info"> 
-	 						       ${ci.qtdLampada} 
+	 						       <strong>Telefone: </strong>${ci.ordemDeServico.telefone} 
+	 						    </td>
+	 						    <td class="info"> 
+	 						       <strong>Descrição: </strong>${ci.ordemDeServico.descricao} 
+	 						    </td>
+							</tr>	
+								
+								
+							<tr class='linha_registro'>	
+								<td class="info"> 
+	 						      <strong>Lampada: </strong>${ci.tipoLampada} 
 	 						    </td>
 								<td class="info"> 
-	 						       ${ci.foto} 
+	 						      <strong>Qtd. Lampada: </strong>${ci.qtdLampada} 
+	 						    </td>
+								<td class="info"> 
+	 						      <strong>Foto: </strong>${ci.foto} 
 	 						    </td>
 	 						    <td class="info"> 
-	 						       ${ci.qtdFoto} 
+	 						      <strong>Qtd. Foto: </strong>${ci.qtdFoto} 
 	 						    </td>
 	 						    <td class="info"> 
-	 						       ${ci.reator} 
+	 						      <strong>Reator: </strong>${ci.reator} 
 	 						    </td>
 	 						    <td class="info"> 
-	 						       ${ci.qtdReator} 
+	 						      <strong>Qtd. Reator: </strong>${ci.qtdReator} 
 	 						    </td>
 							    <td class="info"> 
-	 						       ${ci.potenciaReator} 
+	 						      <strong>Potência: </strong>${ci.potenciaReator} 
 	 						    </td>		
 	 						    <td class="info"> 
-	 						       ${ci.qtdBase} 
+	 						      <strong>Base: </strong>${ci.qtdBase} 
 	 						    </td>					
 	 						    <td class="info"> 
-	 						       ${ci.outro} 
+	 						      <strong>Outro: </strong>${ci.outro} 
 	 						    </td>									
-								
 							</tr>
+							
+							
 						</g:each>
 					</tbody>
 				</table>

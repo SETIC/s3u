@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="s3uIlumReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0be50001-e48c-4779-99ef-eaddf820cbbe">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dataset1" uuid="f5df25fc-fc56-4743-80d4-a31c336053e2"/>
+	<subDataset name="New Dataset 2" uuid="8e8c1243-55de-4365-84fb-9e1b88b5401d">
+		<queryString language="SQL">
+			<![CDATA[select o.id, ts.tipo_servico, oc.numero_poste, e.numero, e.referencia, l.logradouro,
+       b.bairro, c.cidade, es.estado, o.data_emissao, o.interessado, o.telefone, o.descricao, l.cep,
+       (l.logradouro || ' - ' || b.bairro || ' - ' || l.cep) as endereco,
+       TO_CHAR(o.data_emissao, 'DD/MM/YYYY') as data_os
+  from administracao_ordem_de_servico.ordem_de_servico o,
+              administracao_ordem_de_servico.complemento_Iluminacao oc,
+              administracao_ordem_de_servico.tipo_servico ts,
+              administracao_ordem_de_servico.servico s,
+              administracao_ordem_de_servico.endereco e,
+              administracao_ordem_de_servico.logradouro l,
+              administracao_ordem_de_servico.bairro b,
+              administracao_ordem_de_servico.cidade c,
+              administracao_ordem_de_servico.estado es
+where o.id = oc.ordem_de_servico_id
+  and s.id = ts.servico_id
+  and o.tipo_servico_id = ts.id
+  and o.endereco_id = e.id
+  and l.id = e.logradouro_id
+  and b.id = l.bairro_id
+  and b.cidade_id = c.id
+  and es.id = c.estado_id]]>
+		</queryString>
+		<field name="id" class="java.lang.Long"/>
+		<field name="tipo_servico" class="java.lang.String"/>
+		<field name="numero_poste" class="java.lang.String"/>
+		<field name="endereco" class="java.lang.String"/>
+		<field name="referencia" class="java.lang.String"/>
+		<field name="data_emissao" class="java.sql.Timestamp"/>
+		<field name="interessado" class="java.lang.String"/>
+		<field name="telefone" class="java.lang.String"/>
+		<field name="descricao" class="java.lang.String"/>
+		<group name="id">
+			<groupExpression><![CDATA[$F{id}]]></groupExpression>
+		</group>
+		<group name="tipo_servico">
+			<groupExpression><![CDATA[$F{tipo_servico}]]></groupExpression>
+		</group>
+		<group name="numero_poste">
+			<groupExpression><![CDATA[$F{numero_poste}]]></groupExpression>
+		</group>
+		<group name="endereco">
+			<groupExpression><![CDATA[$F{endereco}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[select o.id, ts.tipo_servico, oc.numero_poste, e.numero, e.referencia, l.logradouro,
+       b.bairro, c.cidade, es.estado, o.data_emissao, o.interessado, o.telefone, o.descricao, l.cep,
+       (l.logradouro || ' - ' || b.bairro || ' - ' || l.cep) as endereco,
+       TO_CHAR(o.data_emissao, 'DD/MM/YYYY') as data_os
+  from administracao_ordem_de_servico.ordem_de_servico o,
+              administracao_ordem_de_servico.complemento_Iluminacao oc,
+              administracao_ordem_de_servico.tipo_servico ts,
+              administracao_ordem_de_servico.servico s,
+              administracao_ordem_de_servico.endereco e,
+              administracao_ordem_de_servico.logradouro l,
+              administracao_ordem_de_servico.bairro b,
+              administracao_ordem_de_servico.cidade c,
+              administracao_ordem_de_servico.estado es
+where o.id = oc.ordem_de_servico_id
+  and s.id = ts.servico_id
+  and o.tipo_servico_id = ts.id
+  and o.endereco_id = e.id
+  and l.id = e.logradouro_id
+  and b.id = l.bairro_id
+  and b.cidade_id = c.id
+  and es.id = c.estado_id]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="tipo_servico" class="java.lang.String"/>
+	<field name="numero_poste" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="referencia" class="java.lang.String"/>
+	<field name="logradouro" class="java.lang.String"/>
+	<field name="bairro" class="java.lang.String"/>
+	<field name="cidade" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="data_emissao" class="java.sql.Timestamp"/>
+	<field name="interessado" class="java.lang.String"/>
+	<field name="telefone" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="cep" class="java.lang.String"/>
+	<field name="endereco" class="java.lang.String"/>
+	<field name="data_os" class="java.lang.String"/>
+	<variable name="tipo_servico_1" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Count">
+		<variableExpression><![CDATA[$F{tipo_servico}]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+		<groupHeader>
+			<band height="24">
+				<componentElement>
+					<reportElement key="table" style="table" x="2" y="0" width="800" height="24" uuid="0ae97b20-11f9-4bbf-bfdb-d77f9c7ffa8a"/>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="New Dataset 2" uuid="2745c7fc-7edb-409f-9f40-e4eb055e812d">
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:column width="38" uuid="c616f76a-d352-400d-a80d-7f5b16612fd0">
+							<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
+							<jr:tableFooter style="table_TH" height="0" rowSpan="1"/>
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="2" y="0" width="28" height="30" uuid="3ad74b8d-f9f5-4efb-b406-94b85e409114"/>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Arial" size="6" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Nº O.S.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="2" y="0" width="28" height="20" uuid="c50fb17b-f924-4e2c-b60d-5b856e215e6e"/>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Arial" size="6"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="f74a28a1-b5a0-4c2a-981e-fc248d8e5a0d">
+							<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
+							<jr:tableFooter style="table_TH" height="0" rowSpan="1"/>
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="3" y="0" width="76" height="30" uuid="a9b7dd03-c985-4b59-b103-6465a60e62a6"/>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Arial" size="6" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Serviço]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="3" y="0" width="79" height="20" uuid="c1ff2035-6b29-49f9-9925-36985595e7e6"/>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Arial" size="6"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{tipo_servico}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="42" uuid="4abbe947-b561-4024-8fc6-c32f4309a4ed">
+							<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
+							<jr:tableFooter style="table_TH" height="0" rowSpan="1"/>
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="3" y="0" width="35" height="30" uuid="fc7ba326-224a-434e-aea0-b8d48b8572a8"/>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Arial" size="6" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Nº Poste]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="3" y="0" width="35" height="20" uuid="48d84755-2f56-4eab-a45d-16f8413adb8c"/>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Arial" size="6"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{numero_poste}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="196" uuid="9f224e05-5a91-4413-87d5-cd7cb1be007d">
+							<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
+							<jr:tableFooter style="table_TH" height="0" rowSpan="1"/>
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="3" y="0" width="193" height="30" uuid="81483a02-3c0e-403a-a2e4-eca7fc64a4bd"/>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Arial" size="6" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Endereço]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="3" y="0" width="193" height="20" uuid="d42ce5da-0a3a-4a69-88ea-21a354bd9276"/>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Arial" size="6"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="122" uuid="cbe238c3-c97a-4474-87fe-7645077c4d04">
+							<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
+							<jr:tableFooter style="table_TH" height="0" rowSpan="1"/>
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="3" y="0" width="119" height="30" uuid="b13ae38d-60d8-43c2-8746-87766fe72828"/>
+									<textElement verticalAlignment="Middle">
+										<font size="6" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Referência]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="3" y="0" width="119" height="20" uuid="1c7a29c1-2112-4681-be78-84cbcc9c5187"/>
+									<textElement verticalAlignment="Middle">
+										<font size="6"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="50" uuid="4f8d4088-0910-45ac-b270-74426d2de03d">
+							<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
+							<jr:tableFooter style="table_TH" height="0" rowSpan="1"/>
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="3" y="0" width="46" height="30" uuid="d82e11d8-985f-41dd-9ad4-b18b36e060ac"/>
+									<textElement verticalAlignment="Middle">
+										<font size="6" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Data]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="3" y="0" width="46" height="20" uuid="942f4348-0f95-4306-81a4-c4c3ff3b60f7"/>
+									<textElement verticalAlignment="Middle">
+										<font size="6"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{data_emissao}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="0c7e3d59-3939-4854-af82-e29a57431203">
+							<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
+							<jr:tableFooter style="table_TH" height="0" rowSpan="1"/>
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="3" y="0" width="87" height="30" uuid="aa487867-91a3-4cf4-994c-d3cd9d574823"/>
+									<textElement verticalAlignment="Middle">
+										<font size="6" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Solicitante]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="3" y="0" width="87" height="20" uuid="6d7ecde5-1224-481a-8117-82e2066346d1"/>
+									<textElement verticalAlignment="Middle">
+										<font size="6"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{interessado}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="48" uuid="35cb2880-668b-484f-bb46-b3fd7376cb70">
+							<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
+							<jr:tableFooter style="table_TH" height="0" rowSpan="1"/>
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="3" y="0" width="45" height="30" uuid="f9455da1-7932-4aca-8667-8b4ab79ffe0a"/>
+									<textElement verticalAlignment="Middle">
+										<font size="6" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Contato]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="3" y="0" width="45" height="20" uuid="e10b1923-9d4c-4852-a14d-a447b2ad5968"/>
+									<textElement verticalAlignment="Middle">
+										<font size="6"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="127" uuid="ef76016e-3471-4cfe-a410-8ee2866b0d29">
+							<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
+							<jr:tableFooter style="table_TH" height="0" rowSpan="1"/>
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="3" y="0" width="123" height="30" uuid="4c68c363-f98d-42a4-a276-b20540dd0154"/>
+									<textElement verticalAlignment="Middle">
+										<font size="6" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Descrição]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="3" y="0" width="123" height="20" uuid="14942956-b5f6-40a8-b3fb-c0e9f5273e4c"/>
+									<textElement verticalAlignment="Middle">
+										<font size="6"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="69"/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#FFFFFF" uuid="6f665e28-4bba-4e7e-ab31-1abf0422c801"/>
+				<staticText>
+					<reportElement style="Title" x="67" y="0" width="654" height="66" forecolor="#000000" uuid="868785a4-fa00-4853-ad25-f270dbd03b31"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial" size="10" isBold="false"/>
+					</textElement>
+					<text><![CDATA[ESTADO DO RIO GRANDE DO NORTE
+Prefeitura Municipal de São Gonçalo do Amarante
+Secretaria Municipal de Desenvolvimento Econômico e Turismo
+
+SUBSECRETARIA DE TECNOLOGIA DA INFORMAÇÃO E CIÊNCIA
+]]></text>
+				</staticText>
+				<image>
+					<reportElement x="2" y="0" width="65" height="66" uuid="afab0d98-8ae8-4541-a4df-1fef02d69665"/>
+					<imageExpression><![CDATA["C:\\Michael_Files\\Tutoriais\\S3UReport\\sga.jpg"]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#FFFFFF" uuid="70fbdd4f-0488-4ce1-bf7f-ab2047bce63d"/>
+			</frame>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="643" y="82" width="159" height="20" uuid="d67a1c14-203b-44e6-a100-b76efd80f012"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="5" y="4" width="493" height="18" forecolor="#000000" uuid="2adc3ad2-6368-410e-a8a8-1f53ed032a8b"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RELETÓRIO DE SERVIÇOS DE ILUMINAÇÃO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="39" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="f4247cfb-14e8-45e8-999e-4ea0c0a4e68f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#CCCCCC" uuid="4f8a7ae5-1b63-49dc-b51d-139b52473c0a"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="1ab2c622-ed84-4939-816b-448efca562c0"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="c7946a8e-2a79-4449-911b-9464dd54b80a"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

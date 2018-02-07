@@ -95,19 +95,18 @@
 					</div>
 					<div class="box-body box-chart">
 						<canvas id="GraficoPizza" style="width: 400px; height: 400px;"></canvas>
-						<script type="text/javascript">
+						
+
+					<script type="text/javascript">
 							var abertos = ${tipoStatusAberto}
 							var pendentes = ${tipoStatusPendente}
 							var concluidos = ${tipoStatusConcluido}
 							var total = ${totalStatus}
 							//grafico 
 							var options = {
-
 							responsive : true
 							};
-
 							var data = [
-
 							{
 								value : abertos,
 								color : "#FF5A5E ",
@@ -115,7 +114,6 @@
 								label : "Abertos",
 								scaleBeginAtZero : false,
 								showScale : true
-
 							}, {
 								value : concluidos,
 								color : "#00994C",
@@ -123,7 +121,6 @@
 								label : "Concluidos",
 								scaleBeginAtZero : false,
 								showScale : true
-
 							}, {
 								value : pendentes,
 								color : "#FFC870",
@@ -131,11 +128,8 @@
 								label : "Pendentes",
 								scaleBeginAtZero : false,
 								showScale : true
-
 							},
-
 							]
-
 							window.onload = function() {
 								var ctx = document.getElementById(
 										"GraficoPizza").getContext("2d");
@@ -143,6 +137,8 @@
 										options);
 							}
 						</script>
+
+
 						<table
 							style="position: absolute; top: 5px; right: 5px; font-size: smaller; color: #545454">
 							<tbody>

@@ -127,7 +127,7 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-		grails.serverURL = "http://192.168.3.197:8080/s3u"
+		grails.serverURL = "http://192.168.1.252:8080/s3u"
 		
         // TODO: grails.serverURL = "http://www.changeme.com"
     }

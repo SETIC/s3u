@@ -1,17 +1,32 @@
 package br.gov.rn.saogoncalo.ordemdeservico
 import grails.converters.JSON
 import grails.plugin.rendering.*
+import groovy.sql.Sql
 
+import java.sql.Driver
 import java.text.SimpleDateFormat
-import javax.mail.Header;
 
-import org.codehaus.groovy.grails.commons.GrailsApplication;
-import org.springframework.web.multipart.MultipartFile
+
 
 class OrdemDeServicoController {
 
+
 	def index() {}
 
+	def report(){
+		def o = Status.list()
+		//render o as Jasper
+		print(" Report aqui ")
+
+		chain(controller:"OrdemDeServico",action:"teste",model:[data:o],params:params)
+
+	}
+
+	def teste(){
+
+		print("Teste ")
+		render(view:"/relatorioTeste.gsp")
+	}
 
 
 	/*RenderingService pdfRenderingService
@@ -89,7 +104,10 @@ class OrdemDeServicoController {
 
 			EnviaEmailController envia = new EnviaEmailController()
 			print(" Ordem de Serviço: " + ordemDeServico.id)
-			envia.enviaEmail(ordemDeServico.id)
+
+			if ((params.email != '') && (params.email != null)){
+				envia.enviaEmail(ordemDeServico.id)
+			}
 
 			listarMensagem("Ordem de servico salva com  sucesso", "ok")
 			//redirect(controller:"OrdemDeServico", action:"cadastrarOrdemDeServico", params:[msg: "Chamado cadastrado com sucesso.", tipo:"ok"])
@@ -506,19 +524,19 @@ class OrdemDeServicoController {
 	}
 
 	def homeGrafico(){
-
+		
 		def abertos = Status.get(1)
 		def pendentes = Status.get(2)
 		def concluidos = Status.get(3)
-
+	   
 		def tipoStatusAberto = OrdemDeServico.countByStatus(abertos)
 		def tipoStatusPendente = OrdemDeServico.countByStatus(pendentes)
 		def tipoStatusConcluido = OrdemDeServico.countByStatus(concluidos)
 		def totalStatus = tipoStatusAberto + tipoStatusPendente +tipoStatusConcluido
-
+		
 		render(view:"/ordemDeServico/homeGrafico.gsp", model:[tipoStatusAberto:tipoStatusAberto ,tipoStatusPendente:tipoStatusPendente , tipoStatusConcluido: tipoStatusConcluido,
-			totalStatus:totalStatus])
-	}
+			   totalStatus:totalStatus])
+		   }
 
 
 	RenderingService pdfRenderingService
@@ -687,6 +705,7 @@ class OrdemDeServicoController {
 
 
 			render(view:"/ordemDeServico/relatorioIluminacao.gsp", model:[orgao:orgao , status:status, complementoIluminacao:complementos])
+			//render params as Jasper
 
 		}
 
@@ -928,6 +947,22 @@ class OrdemDeServicoController {
 		render(retorno as JSON)
 
 	}
+
+
+	def dadosDoGrafico(){
+		
+	}
+
+	def gerarCor(){
+		Random sort = new Random()
+		int R = sort.nextInt(255)
+		int G = sort.nextInt(255)
+		int B = sort.nextInt(255)
+		String hex = String.format("#%02x%02x%02x", R, G, B)
+
+		return hex;
+	}
+
 
 }
 

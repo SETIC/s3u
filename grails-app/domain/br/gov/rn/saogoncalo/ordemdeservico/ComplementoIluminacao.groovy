@@ -17,7 +17,7 @@ class ComplementoIluminacao {
 	
     static constraints = {
 		
-		 numeroPoste blank:false, nullable:false
+		 numeroPoste blank:true, nullable:true
 		 tipoLampada blank:true, nullable:true
 		 qtdLampada blank:true, nullable:true
 		 foto blank:true, nullable:true

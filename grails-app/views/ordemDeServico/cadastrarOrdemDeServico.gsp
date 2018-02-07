@@ -41,14 +41,14 @@
 						<div class="form-group">
 							<label for="cpf" class="col-sm-2 control-label">CPF</label> 
 							<div class="col-sm-4">
-								<input class="form-control" id="cpf" placeholder="CPF do interessado" required name="cpf" type="text" value="" onblur="validarMatricula();"/>
+								<input class="form-control" id="cpf" placeholder="CPF do interessado" name="cpf" type="text" value=""/>
 							</div>
 								<p id="mensagemErro" class="text-red">${erro}</p>
 
 						</div>
 												
 						<div class="form-group">
-							<label for="interessado" class="col-sm-2 control-label">Interessado</label>
+							<label for="interessado" class="col-sm-2 control-label">Interessado *</label>
 							<div class="col-sm-4">
 								<input class="form-control" placeholder="Interessado" id="interessado" required name="interessado" type="text" value="">
 							</div>
@@ -86,7 +86,7 @@
 							<label for="email" class="col-sm-2 control-label">E-mail</label>
 							<div class="col-sm-4">
 								<g:textField type="email" class="form-control"
-									placeholder="E-mail" id="email" name="email" value="" required="true"
+									placeholder="E-mail" id="email" name="email" value="" 
 									name="email" onblur="validaEMAIL(email)" />
 							</div>
 							<p id="mensagemErroEmail" class="text-red">${erro}</p>
@@ -94,7 +94,7 @@
 						<br>
 					
 						<div class="form-group">
-							<label for="descricao" class="col-sm-2 control-label">Descrição</label>
+							<label for="descricao" class="col-sm-2 control-label">Descrição *</label>
 							<div class="col-sm-4">
 								<textarea rows="4" cols="5" class="form-control" placeholder="Descreva o atendimento" name="descricao" required></textarea>
 							</div>
@@ -104,7 +104,7 @@
 					
 					
 						<div class="form-group">
-							<label for="tipoServico" class="col-sm-2 control-label">Tipo Serviço</label>
+							<label for="tipoServico" class="col-sm-2 control-label">Tipo Serviço *</label>
 							<div class="col-sm-6">
 								<select name="tipoServico" id="comboTipoServico"
 									class="form-control" data-size="5"
@@ -131,8 +131,20 @@
 						<br>
 												
 						<div class="form-group">
-							<label for="logradouro" class="col-sm-2 control-label">Logradouro</label>
+							<label for="logradouro" class="col-sm-2 control-label">Logradouro *</label>
 							<div class="col-sm-6">
+							
+							<select class="form-control selectpicker" data-live-search="true" name="logradouro" id="comboLogradouro" required>
+								<option value="0" disabled="true" selected="selected">Selecione Logradouro</option>
+									<g:each in="${logradouro}">
+										<option value="${it.id}">
+										${it.logradouro + ' - ' + it.bairro.bairro + ' - ' + it.bairro.cidade.cidade + ' - ' + it.cep} 
+									</option>
+								</g:each>
+							</select>
+							
+							
+							<%--
 								<select name="logradouro" id="comboLogradouro"
 									class="form-control select2 select2-hidden-accessible" >
 									
@@ -144,27 +156,29 @@
 										</option>
 									</g:each>
 								</select>
+							--%>
+							
+							
 							</div>
 						</div>
 						<br>
 						
 						<div class="form-group">
-							<label for="numero" class="col-sm-2 control-label">Número</label>
+							<label for="numero" class="col-sm-2 control-label">Número *</label>
 							<div class="col-sm-4">
-								<input class="form-control" placeholder="Numero" id="numero" name="numero" type="text" value="">
+								<input class="form-control" placeholder="Numero" id="numero" name="numero" type="text" value="" required>
 							</div>
 						</div>
 						<br>
 						
 						<div class="form-group">
-							<label for="referencia" class="col-sm-2 control-label">Referência</label>
+							<label for="referencia" class="col-sm-2 control-label">Referência *</label>
 							<div class="col-sm-4">
-								<textarea rows="4" cols="5" class="form-control" placeholder="Referências do endereço" name="referencia" ></textarea>
+								<textarea rows="4" cols="5" class="form-control" placeholder="Referências do endereço" name="referencia" required></textarea>
 							</div>
 						</div>
 						<br>
 						<br>
-					
 						
 						
 						
@@ -181,6 +195,9 @@
 				</g:form>
 			</div>
 		</div>
+		
+		
+		
 	</section>
 	
     

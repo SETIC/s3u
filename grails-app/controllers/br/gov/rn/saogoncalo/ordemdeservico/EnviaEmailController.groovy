@@ -13,6 +13,9 @@ class EnviaEmailController {
 		
 		
         sendMail {
+			
+			//if((os.email != '') && (os.email != null)){
+			
 			def dataConclusao 
 			if(os.dataConclusao == null){
 				dataConclusao = '-' 
@@ -42,6 +45,8 @@ class EnviaEmailController {
 			
 				  
             }
+		
+	 //}
 
     }    
 }

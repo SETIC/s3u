@@ -42,8 +42,9 @@ environments {
 			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
 
 			//url = "jdbc:postgresql://192.168.1.252:5667/db_sgg_testes"
-			url = "jdbc:postgresql://192.168.3.197:5667/db_sisos_s3u"
+			//url = "jdbc:postgresql://192.168.3.197:5667/db_sisos_s3u"
 			//url = "jdbc:postgresql://192.168.1.252:5667/dg_sga_dev"
+			url = "jdbc:postgresql://192.168.1.252:5667/db_sisos_s3u"
 		}
 	}
 	test {

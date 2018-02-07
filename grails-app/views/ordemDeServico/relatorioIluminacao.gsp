@@ -25,22 +25,8 @@
   function printDiv(id)
   {
 		  
-  var listaOs = document.getElementById('pequisarOs');
-  newWin = window.open("");
-  newWin.document.write("<style=''>");
-  newWin.document.write("<table border='0'>");
-  
-  newWin.document.write("<td><img src='${request.getRequestURL().substring(0, request.getRequestURL().indexOf('s3u/'))}s3u/static/images/sga.png';  style='width:100px; float:left; margin-top:5px;'></td>");
-  newWin.document.write("<tr>");
-  newWin.document.write("<h4 style=' margin-left:180px; '>PREFEITURA MUNICIPAL DE SÃO GONÇALO DO AMARANTE - RN</h4>");
-  newWin.document.write("<h4 style='margin-top:20px; margin-left:320px;'> ORDENS DE SERVIÇO</h4>");
-  newWin.document.write("<style type='text/css' >");
-  newWin.document.write("</style>");
-  newWin.document.write("");
-  newWin.document.write("<br>");
-  newWin.document.write("</td>");
-  newWin.document.write("</tr>");
-  newWin.document.write("</table><br>");
+  var listaOs = document.getElementById('pesquisarOs');
+  //var listaOs = document.getElementById('tabelas'); 
 
   var now = new Date();
   meses = new Array(12);
@@ -57,9 +43,29 @@
   meses[10] = "Novembro";
   meses[11] = "Dezembro";
   
-  newWin.document.write ("<center style='font-size:18px;'><br/>Gerado dia " + now.getDate() + " de " + meses[now.getMonth()] + " de " + now.getFullYear() + " às " + now.getHours()+":"+now.getMinutes()+"</center>");
+  
+  newWin = window.open("");
+
+  newWin.document.write("<table style='width: 741px;'>");
+  newWin.document.write("<tbody>");
+  newWin.document.write("<tr>");
+  newWin.document.write("<td style='width: 121px;' rowspan='2'>   <img src='${request.getRequestURL().substring(0, request.getRequestURL().indexOf('s3u/'))}s3u/static/images/sga.png';  style='width:100px; float:left; margin-top:5px;'>  </td>");
+  newWin.document.write("<td style='width: 628px; '>&nbsp;PREFEITURA MUNICIPAL DE S&Atilde;O GON&Ccedil;ALO DO AMARANTE - RN <br> &nbsp;SECRETARIA MUNICIPAL DE SERVI&Ccedil;OS URBANOS <br> &nbsp;RELATORIO DE OS DE ILUMINAÇÃO <br> &nbsp;GERADO EM " + now.getDate() + " de " + meses[now.getMonth()] + " de " + now.getFullYear() + " às " + now.getHours()+":"+now.getMinutes() + " </td>");
+  newWin.document.write("</tr>");
+  newWin.document.write("<tr>");
+  newWin.document.write("<td style='width: 628px; '> </td>");
+  newWin.document.write("</tr>");
+  newWin.document.write("<tr>");
+  newWin.document.write("<td style='width: 121px; text-align: center;' colspan='2'> </td>");
+  newWin.document.write("</tr>");
+  newWin.document.write("</tbody>");
+  newWin.document.write("</table> <br>");
+
+  
+    
   newWin.document.write(listaOs.outerHTML);
   newWin.print();
+  
   newWin.close();
   
 }
@@ -171,7 +177,9 @@
 			</g:if>
                        
 			<div class="box box-white">
-				<table id="pequisarOs" cellpadding="0.2em" cellspacing="0" border="1px" class="table table-striped table-hover example" border="1" style="font-size:0.8em">
+				<table id="pesquisarOs" cellpadding="0.2em" cellspacing="0" border="1px" class="table table-striped table-hover example" border="1" style="font-size:0.8em">
+								
+					<div id='tabelas'>		
 					<thead>
 						<tr class="success">
 						
@@ -231,6 +239,9 @@
 							</tr>
 						</g:each>
 					</tbody>
+					
+					</div>
+					
 				</table>
 			</div>
 		</div>
@@ -244,6 +255,10 @@
 				</div>
 	</section>
  </body>
+ 
+ 
+ 
+ 
  
 </html>
 
